@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- A biblioteca bundle já contem os arquivos JS do Bootstrap, Popper, e jQuery.
+    <script src="js/bootstrap.bundle.js"></script>-->
+    <title>FTT EC LP2 N2!!</title>
+    <LINK REL="stylesheet" HREF="css/bootstrap.css" />
+    <STYLE>
+        .center-txt {
+            text-align: center;
+            color: black;
+            width: 90px;
+            padding: 4px;
+            margin:0;
+            border:0;
+        }
+        .button-selected {
+            background-color: #343a40;
+            color: white;
+            border-radius: 15px;
+        }       
+        .width-button-bar {
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-right: 0;
+            margin-left: 0;
+            
+        }
+        .bottom-button-bar {
+            margin:0;
+            padding:0;
+            border:0;
+            width: 100%;
+        }
+        .icon-font {
+            font-size: 40px;   
+        }
+        main {
+            padding-top: 56px;
+            padding-bottom: 50px;
+        }
+        .Centralizar {
+            text-align: center;
+        }
+        
+        .altura {
+            height: 190px;
+        }
+    </STYLE>
+ <SCRIPT>
+        <!-- Obtenha sua própria chave (key), vou cancelar esta... --> 
+//        var key = 'a471bfae6bea4870828911cc205e47e9'; //Conseguir   uma chave no site da API...
+//        var newsSearch = document.getElementById("selectpicker");
+//        var newsSearchText;
+        var url;
+        
+        //Cria CARDS com os dados do JSON
+        //Referência: https://getbootstrap.com/docs/4.3/components/card/
+        function createNewsCards(nData) {
+            
+//            var tipo = document.createElement("test");
+//            test.innerText = nData.bpi.USD.code;
+//            document.getElementById("test").innerHTML;
+            
+//            document.getElementById("a").innerText = nData.bpi.USD.code;
+            document.getElementById("p").innerText = nData.bpi.USD.rate + " USD";
+            document.getElementById("e").innerText = nData.bpi.EUR.rate + " EUR";
+            document.getElementById("g").innerText = nData.bpi.GBP.rate + " GBP";
+
+//            document.createElement("a");
+            
+//            var a = document.createElement("P");
+//            p.innerText = nData.bpi.USD.rate;
+//            document.getElementById("aluno").appendChild(p);
+//                    
+//            var a = document.createElement("ARTICLE"); // Create a <ARTICLE> element    
+//            a.setAttribute("class", "card");
+//    
+//            var nImg = document.createElement("IMG"); // Create a <H2> element  
+//            var h2 = document.createElement("H2"); // Create a <H2> element   
+//            h2.setAttribute("class", "card-header");   
+//            var desc = document.createElement("P"); // Create a <H2> element   
+//            desc.setAttribute("class", "card-body");
+//    
+//            var ath = document.createElement("AUTHOR"); // Create a <AUTHOR> element    
+//            ath.setAttribute("class", "card-footer");
+//            
+//            
+//    
+//            nImg.src = nData.articles[i].urlToImage; // Create a text node  
+//            nImg.style.width = '100%'; //The full width is 400px, 10px of border left and right   
+//            h2.innerText = nData.articles[i].title; // Create a text node  
+//            desc.innerText = nData.articles[i].description;   
+//            ath.innerText = "by " + nData.articles[i].author + " - " + nData.articles[i].source.name;
+//    
+//            a.appendChild(nImg);    
+//            a.appendChild(h2); // Append the text to    
+//            a.appendChild(desc);   
+//            a.appendChild(ath);
+//    
+//            document.getElementById("noticias").appendChild(a);
+//            
+//             //for
+//            
+//            // remove imagens quebradas, deixa o card sem imagem
+//            document.querySelectorAll('img').forEach(function(img){
+//  	             img.onerror = function(){ this.style.display='none'; };
+            };
+          
+         //createNewsCards
+
+        //Busca os dados da API (Serviço REST/JSON - AJAX)
+        function reloadPage() {
+
+//            newsSearch = document.getElementById("selectpicker");
+//            newsSearchText = newsSearch.options[newsSearch.selectedIndex].value;
+
+            url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
+            document.getElementById("aluno");
+            console.log(url);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onload = function() {
+
+                if (xhr.status >= 200 && xhr.status < 300) {
+
+                    console.log('success!', JSON.parse(xhr.responseText));
+                    var newsData = JSON.parse(xhr.responseText);
+                    createNewsCards(newsData);
+
+                } else {
+                    
+                    let error_message= "Ops! Erro!!!<br>" + xhr.statusText;
+                    console.log(error_message);
+                    document.getElementById("noticias").innerHTML = error_message;
+                } //if
+
+                console.log('Here we are...');
+            };
+
+            xhr.open('GET', url);
+            xhr.send();
+            
+        } //reloadPage
+
+
+
+    </SCRIPT>
+</HEAD>
+
+<BODY onload="reloadPage();" lang="pt-br">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">&#x1F981; Lucas Bispo 082160021</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <div class="navbar-nav float-right text-right pr-3">
+                <a class="nav-item nav-link" href="index.html">Splash</a>
+                <a class="nav-item nav-link" href="http://www.fundacaosalvadorarena.org.br/" target="newpage">CEFSA</a>
+                <a class="nav-item nav-link" href="about.html">Sobre</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" id="aluno">
+        <div class="jumbotron text-center altura">
+            <h1>Valor do Bitcoin em outras moedas</h1>
+            <p>Veja como a moeda virtual está se comportando em diferentes lugares!</p>
+        </div>
+        
+        <div class="row">
+        <div class="col-sm-4">    
+            <hr>
+            <div class="card bg-light text-dark">
+                <h1><span class="card-body Centralizar">Valor em dolar</span></h1>
+                <p class="card-text Centralizar" id="p"  ></p>
+            </div> 
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                <p class="card-text">Aprenda sobre a historia da moeda dos Estados Unidos</p>
+                <a href="https://pt.wikipedia.org/wiki/Dólar_dos_Estados_Unidos"  target="_blank" class="btn btn-dark">Ler Sobre </a>
+
+                </div>
+            </div>         
+        </div>
+            
+        <div class="col-sm-4">    
+            <hr>
+            <div class="card bg-light text-dark">
+                <h1><span class="card-body Centralizar">Valor em Euro</span></h1>
+                <p class="card-text Centralizar" id="e"  ></p>
+            </div> 
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                <p class="card-text">Aprenda sobre a historia da moeda da Europa</p>
+                <a href="https://pt.wikipedia.org/wiki/Euro" target="_blank" class="btn btn-dark">Ler Sobre </a>
+
+                </div>
+            </div>         
+        </div>
+            
+        <div class="col-sm-4">    
+            <hr>
+            <div class="card bg-light text-dark">
+                <h1><span class="card-body Centralizar">Valor em Libra</span></h1>
+                <p class="card-text Centralizar" id="g"  ></p>
+            </div> 
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                <p class="card-text">Aprenda sobre a historia da moeda Libra Esterlina</p>
+                <a href="https://pt.wikipedia.org/wiki/Libra_esterlinas" target="_blank" class="btn btn-dark">Ler Sobre </a>
+                </div>
+            </div>         
+        </div>
+        </div>
+        
+    </main>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">
+        <div class="row w-100 bottom-button-bar">
+            <div class="col-sm center-txt"><b onclick='window.location="tab01news.html"'>News<br><span class="icon-font">&#x1f4f0;</span></b>
+            </div>
+            <div class="col-sm center-txt"><b onclick='window.location="tab02map.html"'>Map<br><span class="icon-font">&#x1f4cc;</span></b>
+            </div>
+            <div class="col-sm center-txt"><b onclick='window.location="tab03todo.html"'>Todo<br><span class="icon-font">&#x1F4DD;</span></b>
+            </div>
+            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab04project.html"'>Price<br><span class="icon-font">&#128176;</span></b>
+            </div>
+        </div>
+    </nav>
+    
+</BODY>
+<!-- carga de scripts do Bootstrap, JQuery, Popper -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</HTML>
